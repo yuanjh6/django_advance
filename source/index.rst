@@ -10,13 +10,13 @@ Welcome to django_study's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   django进阶01信号
+   django进阶02websocket
    django进阶03静态文件和模板
-   django进阶05中间件
    django进阶04部署上线(nginx,uwsgi,supervisor)
+   django进阶05中间件
    django进阶06数据库事务
    django进阶07用户模块与权限系统
-   django进阶02websocket
-   django进阶01信号
 
 
 Indices and tables
