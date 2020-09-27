@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'django_study'
+project = 'django_advance'
 copyright = '2020, yuanjh'
 author = 'yuanjh'
 
