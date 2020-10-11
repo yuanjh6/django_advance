@@ -2,7 +2,7 @@
 看起来简单，用起来简单。理解起来则未必容易。上学那会这一块就没整明白，这两天又查了下资料，算是基本弄懂了。  
 为何难以理解？个人感觉起名占了很大一部分，如果signal命名为“观察者”，“监控者”，“盯梢者"，就容易理解多了。其本质就是一种典型观察者模式。命名为信号，第一感觉是”信号量“类似的东西。  
 
-## 定义信号：
+## 定义信号  
 ```
 import django.dispatch
 pizza_done = django.dispatch.Signal(providing_args=["toppings", "size"])
@@ -18,7 +18,7 @@ class PizzaStore(object):
 ,,,
 ```
 
-## 断开信号
+## 断开信号  
 ```
 Signal.disconnect(receiver=None, sender=None, dispatch_uid=None)[source]
 ```
@@ -28,7 +28,7 @@ Signal.disconnect()用来断开信号的接收器。和Signal.connect()中的参
 https://www.cnblogs.com/qwj-sysu/p/4224805.html    
 https://blog.csdn.net/qq_37049050/article/details/81299873  
 
-## 完整例子
+## 完整例子  
 ```
 from django.shortcuts import HttpResponse
 import time
@@ -54,7 +54,7 @@ def create_signal(request):
 def my_callback(sender, **kwargs):
     print("我在%s时间收到来自%s的信号，请求url为%s" % (kwargs['time'], sender, kwargs["path"]))
 ```
-## 如何理解
+## 如何理解  
 难以理解除了上面提到的命名问题外，还有一因素就是大家开发中可能较少使用观察者模式，就以上面的例子说下个人理解方式.  
 ![](_v_images/20200503152221895_1265135324.png)  
 
@@ -80,7 +80,7 @@ from django.core.signals import request_finished
 request_finished.connect(my_callback, dispatch_uid="my_unique_identifier")
 ```
 
-## 疑问
+## 疑问  
 信号提供了断开接口，但为何需要要断开？何时断开，没找到答案，自己也没想明白，个人理解，如果断开是否造成同一个程序的二义性执行（断开了自然比没有断开少做事情了），这显然违反基本软件开发原则（可复现）  
 
 

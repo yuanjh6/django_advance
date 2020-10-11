@@ -70,7 +70,7 @@ course_obj = Course.objects.get(pk=1)
 course_obj.purchased_quantity = F('purchased_quantity') + 1  
 course_obj.save()  
 ```
-## 利用select_for_update函数`  
+## 利用select_for_update函数  
 ```
 select_for_update 使用的是悲观锁，这是数据库层面的，解决并发取数据后再修改的问题方法。  
   
@@ -91,7 +91,7 @@ class MyView(View):
         return HttpResponse('ok')  
 ```
 
-## 其他
+## 其他  
 django 中操作数据库 均是对 模型类进行CRUD 操作  
 
 | 功能 | mysql命令 | django命令 |
@@ -100,6 +100,6 @@ django 中操作数据库 均是对 模型类进行CRUD 操作
 | 提交事务 | commit | transaction.savepoint_commit(sid) |
 | 回滚事务 | rollbok | tramsaction\_savepoint\_rollback(sid) |
 
-## 参考
+## 参考  
 Django 中事务的处理:https://www.jianshu.com/p/23ccd5f254bf  
 Django-框架保证并发时数据一致性:https://blog.csdn.net/Fe_cow/article/details/90267103  

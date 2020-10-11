@@ -1,12 +1,12 @@
 # django进阶05中间件
-## 什么是中间件
+## 什么是中间件  
 django的中间件（middleware）是一个轻量级的插件系统，在django中的请求和响应中，可以利用中间件干预视图的请求和响应。  
-## 如何启用中间件
+## 如何启用中间件  
 若要启用中间件组件，请将其添加到 Django 配置文件settings.py的 MIDDLEWARE 配置项列表中。  
 
 ![](_v_images/20200618233823989_414295578.png)  
 
-## 五大钩子函数
+## 五大钩子函数  
 
 传统方式自定义中间件其实就是在编写五大钩子函数：  
 ```
@@ -18,7 +18,7 @@ process_template_response(self,request,response)
 ```
 可以实现其中的任意一个或多个！  
 
-## 中间件的顺序问题
+## 中间件的顺序问题  
 从上一部分可以看出，中间件是有多个的，既然有多个必然涉及到优先级或顺序问题，顺序大体上符合先来后到（不存在插队类型的优先级，要么正序，要么逆序，不能插队跳跃执行）  
 MIDDLEWARE 的顺序很重要，具有先后关系，因为有些中间件会依赖其他中间件。例如： AuthenticationMiddleware 需要在会话中间件中存储的经过身份验证的用户信息，因此它必须在 SessionMiddleware 后面运行 。  
 在请求阶段，调用视图之前，Django 按照定义的顺序执行中间件 MIDDLEWARE，自顶向下。   
@@ -31,7 +31,7 @@ MIDDLEWARE 的顺序很重要，具有先后关系，因为有些中间件会依
 更为详细的执行流  
 ![](_v_images/20200618235107754_1689506481.png)  
 
-## 可以做什么
+## 可以做什么  
 Cache:缓存中间件  
 如果启用了该中间件，Django会以CACHE_MIDDLEWARE_SECONDS 配置的参数进行全站级别的缓存。  
 
@@ -64,7 +64,7 @@ Django最主要的中间件之一，提供用户认证服务。
 CSRF protection:提供CSRF防御机制的中间件  
 
 X-Frame-Options:点击劫持防御中间件  
-## 可能遇到问题
+## 可能遇到问题  
 **全局异常object() takes no parameters**  
 错误信息如下  
 ```
@@ -120,7 +120,7 @@ class SimpleMiddleware(MiddlewareMixin):
         pass
 ```
 
-## 参考
+## 参考  
 Django(十二）：Django框架中的middleware中间件:https://blog.csdn.net/qq_40558166/article/details/102467833  
 Django框架全面讲解 -- 中间件（MiddleWare）:https://blog.csdn.net/shentong1/article/details/78829599  
 Django 中间件:https://www.runoob.com/django/django-middleware.html  

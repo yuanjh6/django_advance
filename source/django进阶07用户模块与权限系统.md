@@ -1,5 +1,5 @@
 # django进阶07用户模块与权限系统
-Django默认提供了用户权限管理模块auth，  
+Django默认提供了用户权限管理模块auth  
 ```
 user表，User是auth模块中维护用户信息的表，在数据库中该表被命名为auth_user. 该表继承自Abstractuser.  
 group表，定义用户组模型，该表只包含一个name字段和一个permissions(权限)多对多关系字段，在数据库中被命名为auth_group.  
@@ -214,7 +214,7 @@ class Discussion(models.Model):
 ```
 user.has_perm('blog.create_discussion')  
 ```
-## 视图的用户权限
+## 视图的用户权限  
 无法添加或更改某个模型的用户将无法在管理员中看到。  
 如果我们在谈论自定义创建的视图，那么您可以创建一些检查用户权限的内容，如果没有该权限，则返回404。权限与模型相关联，组可分配各种权限。  
 您可以向模型添加权限：  
@@ -235,7 +235,7 @@ user.has_perm('blog.create_discussion')
 ```
 使用权限，您可以使用管理界面轻松地添加或删除用户和组。  
 
-## 用法实例
+## 用法实例  
 ### 简单的认证  
 **Login_required 装饰器**  
 判断是否登陆，没有就自动重定向某个地方  
@@ -309,7 +309,7 @@ lass TagManage(PermissionRequiredMixin,View):
 ```
 没有权限直接403  
 
-## 参考
+## 参考  
 Django权限系统auth模块详解：https://www.cnblogs.com/ccorz/p/6358074.html  
 Django2.0——权限系统Auth:https://blog.csdn.net/wzyaiwl/article/details/88597166  
 Django - 某些视图的用户权限？(Django - user permissions to certain views?)：https://www.it1352.com/635496.html    

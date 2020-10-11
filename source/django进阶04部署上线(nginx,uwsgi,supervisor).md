@@ -175,14 +175,14 @@ chmod -R 777 /data
 chmod -R 777 /data/www/  
 ```
 
-## 验证无问题后的进一步改进
+## 验证无问题后的进一步改进  
   
 01，nginx的转发（到uwsgi），从http转发模式改为socket转发模式（nginx.conf,uwsgi.conf）（对接阶段使用http，方便独立的正确性验证。正式环境改为socket模式，保证速度以及减少端口占用。）  
 02，supervisord.conf配置的autostart和autorestart改为true。确保进程死机后自动重启。  
 03，检查各路径配置，是否有私有路径（别人无法访问的路径）,可能导致别人无法启动项目。  
 
-## 其他注意事项
-### 启用django后台管理admin模块
+## 其他注意事项  
+### 启用django后台管理admin模块  
 启用admin后会发现无法进入登录界面（部分资源无法加载static/admin/simple-ui/xxxx）  
 原因：问题admin/下的静态资源无法访问。  
 大部分项目前后端完全分离，所以templates和static一般都是前端组提供，我们想当然就用了，而实际上django_admin模块内部也包含部分静态资源，当使用django内置服务器时可以检索到，但如果部署到线上则必须将admin内静态文件导出，整合到统一的templates目录中(让nginx检索到)。
@@ -192,7 +192,7 @@ python manage collectstatic # 自动收集静态文件到django_setting配置的
 cp STATIC_ROOT templates/static
 chmod -R 777 xxx
 ```
-## 参考
+## 参考  
 linux下部署Django uwsgi: error while loading shared libraries: libpcre.so.1: cannot open shared object file: No such file or directory:https://www.cnblogs.com/erhangboke/p/11673156.html  
 初次使用uwsgi:no python application found, check your startup logs for errors:https://www.cnblogs.com/loveyangaddddd/p/8119720.html    
 uWSGI出现错误：no python application found, check your startup logs for errors:https://blog.csdn.net/weixin_40576010/article/details/89000128      

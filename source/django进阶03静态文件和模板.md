@@ -1,9 +1,9 @@
 # django进阶03静态文件和模板
-## 静态文件和模板
+## 静态文件和模板  
 静态文件:css,js,image,如果作为纯粹的web应用来看，静态文件的响应并不属于web应用范畴，**因为静态文件不涉及业务逻辑，也不需开发业务代码**。但几乎100%的web应用都支持对静态文件的直接访问。为何？主要是web应用基本上必然依赖css,js,img等静态资源，我们不可能固执的开发一个纯粹的web应用，**只支持从url里进入视图函数，也只能从视图函数返回内容**（简单来说所有请求路径都必须体现在url_route和view视图中）。而要求用户独立开启静态资源的请求处理服务。所以，先把静态资源服务和包含业务逻辑的web应用独立认识，二者并不相同，但强相关。**其本身是独立于应用的**   
 模板:在代码中response渲染中使用的，可以看做view视图的组成部分.所以没有独立url配置，**依赖view视图存在**，属于应用一部分，包含了业务逻辑（需要渲染），这一点也可以从配置上看出来。   
 
-## django配置静态文件
+## django配置静态文件  
 **STATIC_ROOT**  
 所有的静态文静聚合的目录,  
 STATIC_ROOT要写成绝对地址,在这里,比如我的项目mysite是/home/mysite/ 那么STATIC_ROOT 为 /home/mysite/collect_static/   
@@ -36,7 +36,7 @@ STATIC_URL = '/static/'
 D:\TestDjango>python manage.py findstatic Chrome.jpg ('D:/TestDjango/TestDjango/templates',)
 ```
 
-## django配置模板
+## django配置模板  
 模板相关配置  
 ```
 TEMPLATES = [
