@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to django_study's documentation!
+django学习笔记
 ========================================
+公司业务需要，需要将原flask框架项目迁移到django上，django本人只是在学校时简单使用过，况且也是好久之前的事情了，顺便整理下相关知识点
 
 .. toctree::
    :maxdepth: 2
