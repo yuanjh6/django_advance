@@ -99,6 +99,75 @@ course_obj = Course.objects.get(pk=1)
 course_obj.purchased_quantity = F('purchased_quantity') + 1  
 course_obj.save()  
 ```
+使用F()函数保存值后,**再次使用实例调用并不能拿到新的值**.这是因为F()函数是数据库操作,并不是在内存中python进行的,所以之前拿到的实例存储的还是之前的值.所以**需要重新载入实例(即重新获取实例)**。
+
+
+优点01:**F()函数配合update可以优化效率**,不再需要使用get()和save()方法
+
+更新单个实例
+
+```
+reporter = Reporters.objects.filter(name='Tintin')
+reporter.update(stories_filed=F('stories_filed') + 1)
+```
+更新多个实例
+
+```
+Reporter.objects.all().update(stories_filed=F('stories_filed') + 1)
+```
+优点02:**F()函数避免竞争**
+
+## Q对象
+多个过滤器逐个调用表示逻辑与关系，同sql语句中where部分的and关键字。
+
+例：查询阅读量大于20，并且编号小于3的图书。
+
+list=BookInfo.objects.filter(bread__gt=20,id__lt=3) 或 list=BookInfo.objects.filter(bread__gt=20).filter(id__lt=3)如果需要实现逻辑或or的查询，需要使用Q()对象结合|运算符，Q对象被义在django.db.models中。
+
+语法如下： Q(属性名__运算符=值)例：查询阅读量大于20的图书，改写为Q对象如下。
+
+```
+from django.db.models import Q 
+list = BookInfo.objects.filter(Q(bread__gt=20))
+```
+Q对象可以使用&、|连接，&表示并且，|表示或。
+
+例：查询阅读量大于20，或编号小于3的图书，只能使用Q对象实现
+
+list = BookInfo.objects.filter(Q(bread__gt=20) | Q(pk__lt=3))
+
+Q对象前可以使用~操作符，表示非not。例：查询编号不等于3的图书。
+
+```
+list = BookInfo.objects.filter(~Q(pk=3))exclude() 也是取反 
+list = BookInfo.objects.exclude(id=3) 
+list = BookInfo.objects.exclude(id__exact=3)
+```
+聚合函数
+
+使用aggregate()过滤器调用聚合函数。聚合函数包括：Avg，Count，Max，Min，Sum，被定义在django.db.models中。
+
+例：查询图书的总阅读量。
+
+```
+from django.db.models import Sum 
+list = BookInfo.objects.aggregate(Sum('bread'))
+```
+注意aggregate的返回值是一个字典类型，格式如下：
+
+{'属性名__聚合类小写':值}
+
+如:{'bread__sum':3}
+
+使用count时一般不使用aggregate()过滤器。
+
+例：查询图书总数。
+
+list = BookInfo.objects.count()
+
+注意count函数的返回值是一个数字。
+
+
 ## 利用select_for_update函数
 
 ```
@@ -121,6 +190,8 @@ class MyView(View):
         return HttpResponse('ok')  
 ```
 
+
+
 ## 其他
 
 django 中操作数据库 均是对 模型类进行CRUD 操作
@@ -137,4 +208,8 @@ django 中操作数据库 均是对 模型类进行CRUD 操作
 Django 中事务的处理:https://www.jianshu.com/p/23ccd5f254bf
 
 Django-框架保证并发时数据一致性:https://blog.csdn.net/Fe_cow/article/details/90267103
+
+django查询之F函数:https://www.jianshu.com/p/7562f5ed983e
+
+Django models模型-条件查询：https://www.cnblogs.com/daidechong/p/10820175.html
 
