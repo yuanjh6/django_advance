@@ -11,13 +11,19 @@ django学习笔记
    :maxdepth: 2
    :caption: Contents:
 
-   django进阶01信号
-   django进阶02websocket
-   django进阶03静态文件和模板
-   django进阶04部署上线(nginx,uwsgi,supervisor)
-   django进阶05中间件
-   django进阶06数据库事务
-   django进阶07用户模块与权限系统
+   django入门进阶01学习笔记01
+   django入门进阶02学习笔记02
+   django入门进阶04学习笔记04
+   django入门进阶05快捷复习手册
+   django入门进阶06静态文件和模板
+   django入门进阶07用户模块与权限系统
+   django入门进阶08数据库事务
+   django入门进阶09中间件
+   django入门进阶10部署上线(nginx,uwsgi,supervisor)
+   django入门进阶11websocket
+   django入门进阶12信号
+   django入门进阶13异常之makemigrations
+   django入门进阶14其他异常报错等
 
 
 Indices and tables
