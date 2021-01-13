@@ -1,1 +1,2 @@
-sphinx-markdown-tables
+spshinx-markdown-tables
+sphinx==2.0
