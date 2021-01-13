@@ -1,1 +1,4 @@
-spshinx-markdown-tables
+sphinx-markdown-tables
+sphinx_rtd_theme
+recommonmark
+sphinx==2.0
