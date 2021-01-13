@@ -13,6 +13,7 @@ django学习笔记
 
    django入门进阶01学习笔记01
    django入门进阶02学习笔记02
+   django入门进阶03学习笔记03 
    django入门进阶04学习笔记04
    django入门进阶05快捷复习手册
    django入门进阶06静态文件和模板
