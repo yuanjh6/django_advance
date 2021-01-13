@@ -2,10 +2,9 @@
 
 基于教程，刘江的博客教程Django教程:https://www.liujiangblog.com/course/django/87
 
+第一章:模型层
 
-## 第一章:模型层
-
-### 1.1 模型和字段
+## 1.1 模型和字段
 FileField
 
 ImageField
@@ -16,7 +15,7 @@ UUIDField
 
 
 
-### 1.2 关系类型字段
+## 1.2 关系类型字段
 一，一对多
 
 外键要定义在‘多’的一方！
@@ -56,7 +55,7 @@ null参数对ManyToManyField多对多字段无效！设置null=True毫无意义
 三、一对一（OneToOneField）
 
 
-### 1.3 字段的参数
+## 1.3 字段的参数
 
 null
 
@@ -170,10 +169,10 @@ first_name = models.CharField(max_length=30)
 
 
 
-### 1.4 多对多中间表详解
+## 1.4 多对多中间表详解
 
 
-### 1.5 模型的元数据Meta
+## 1.5 模型的元数据Meta
 abstract
 
 app_label
@@ -221,7 +220,7 @@ label
 label_lower
 
 
-### 1.6 模型的继承
+## 1.6 模型的继承
 抽象基类,多表继承,代理模型
 
 抽象基类中的abstract=True这个元数据不会被继承。也就是说如果想让一个抽象基类的子模型，同样成为一个抽象基类，那你必须显式的在该子模型的Meta中同样声明一个abstract = True；
@@ -292,5 +291,5 @@ class A(models.Model):
 class B(A):
     name = models.CharField(max_length=30)
 ```
-### 1.7 用包来组织模型
+## 1.7 用包来组织模型
 
